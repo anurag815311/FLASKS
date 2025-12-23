@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h3 class="mb-4">Your Blog Posts</h3>
+
+{% for post in posts %}
+<div class="card mb-3 shadow-sm">
+  <div class="card-body">
+    <h5 class="card-title">{{ post.title }}</h5>
+    <p class="card-text">{{ post.content }}</p>
+
+    <a href="/edit/{{ post.id }}" class="btn btn-sm btn-outline-primary">Edit</a>
+    <a href="/delete/{{ post.id }}" 
+       class="btn btn-sm btn-outline-danger"
+       onclick="return confirm('Are you sure?')">
+       Delete
+    </a>
+  </div>
+</div>
+{% else %}
+<p class="text-muted">No posts yet. Create one!</p>
+{% endfor %}
+
+{% endblock %}
