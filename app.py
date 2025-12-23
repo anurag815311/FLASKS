@@ -107,6 +107,11 @@ def delete(post_id):
     db.session.commit()
     return redirect('/')
 
+@app.route('/blogs')
+def public_blogs():
+    posts = Post.query.order_by(Post.id.desc()).all()
+    return render_template('public_blogs.html', posts=posts)
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()

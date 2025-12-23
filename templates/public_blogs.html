@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h3 class="mb-4">Public Blog Feed</h3>
+
+{% for post in posts %}
+<div class="card mb-4 shadow-sm">
+  <div class="card-body">
+    <h5 class="card-title">{{ post.title }}</h5>
+    <p class="text-muted mb-2">
+        By {{ post.author.username }}
+    </p>
+    <p class="card-text">{{ post.content }}</p>
+  </div>
+</div>
+{% else %}
+<p class="text-muted">No blog posts available.</p>
+{% endfor %}
+
+{% endblock %}
