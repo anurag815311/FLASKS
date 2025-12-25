@@ -112,6 +112,12 @@ def public_blogs():
     posts = Post.query.order_by(Post.id.desc()).all()
     return render_template('public_blogs.html', posts=posts)
 
+@app.route('/profile/<username>')
+def profile(username):
+    user = User.query.filter_by(username=username).first_or_404()
+    posts = Post.query.filter_by(user_id=user.id).order_by(Post.id.desc()).all()
+    return render_template('profile.html', user=user, posts=posts)
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()

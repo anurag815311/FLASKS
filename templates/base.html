@@ -18,6 +18,11 @@
   {% if current_user.is_authenticated %}
     <a class="btn btn-outline-light btn-sm" href="/create">New Post</a>
     <a class="btn btn-outline-danger btn-sm" href="/logout">Logout</a>
+    <a class="btn btn-outline-light btn-sm"
+   href="/profile/{{ current_user.username }}">
+   My Profile
+</a>
+
   {% else %}
     <a class="btn btn-outline-light btn-sm" href="/login">Login</a>
   {% endif %}
